@@ -3,6 +3,12 @@ import "./HabitCard.css"
 import close from "../../svg/close.svg"
 import check from "../../svg/check.svg"
 
+type Habit = {
+    _id: string,
+    habit: string;
+    completed: boolean;
+}
+
 interface IProps {
     habit: {
         _id: string,
@@ -14,11 +20,7 @@ interface IProps {
         habit: string,
         completed: boolean
     }[],
-    setHabits: React.Dispatch<React.SetStateAction<{
-        _id: string,
-        habit: string;
-        completed: boolean;
-    }[]>>
+    setHabits: React.Dispatch<React.SetStateAction<Habit[]>>
 }
 
 function HabitCard({ habit, setHabits, habits }: IProps) {
