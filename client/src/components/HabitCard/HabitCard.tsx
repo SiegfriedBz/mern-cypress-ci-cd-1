@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import "./HabitCard.css"
 import close from "../../svg/close.svg"
 import check from "../../svg/check.svg"
