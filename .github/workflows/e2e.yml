@@ -33,7 +33,7 @@ jobs:
       - name: Create React Build 🏗️ & Run Cypress Tests 🧪
         uses: cypress-io/github-action@v3
         with:
-          project: ./client
+          project: project-2/client
           browser: chrome
           build: npm run build
           start: npm start

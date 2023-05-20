@@ -71,7 +71,7 @@ app.get("/rewards", (req, res) => {
 })
 
 app.listen(4000, () => {
-    console.log("Now Listening on Port 4000")
+    console.log("🚀 Now Listening on Port 4000")
 })
 
 
