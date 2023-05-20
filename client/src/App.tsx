@@ -1,11 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
 import SideNav from './components/SideNav/SideNav';
 import Habit from "./components/Habit/Habit"
 import Accomplishment from './components/Accomplishment/Accomplishment';
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 import Rewards from './components/Rewards/Rewards';
-import Elements from './components/Elements/Elements';
 
 function App() {
   return (

@@ -23,10 +23,12 @@ function Accomplishment() {
         }
 
         try {
+            setLoading(true)
             await axios.post("http://localhost:4000", {
                 title,
                 accomplishment
             });
+            setLoading(false)
         } catch (error: any) {
             setErrorMsg(error.response.data.msg)
             setShowError(true)
@@ -90,7 +92,7 @@ function Accomplishment() {
                     (showSuccess) && (
                         <div>
                             <div className="Accomplishment-spinner-container">
-                                <img src={confetti} className="Accomplishment-img"/>
+                                <img src={confetti} alt='confetti' className="Accomplishment-img"/>
                                 <h1>This Accomplisment was Successfully Submitted</h1>
                             </div>
                             <button className="Accomplishment-btn" onClick={() => {

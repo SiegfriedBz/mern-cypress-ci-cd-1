@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import HabitCard from '../HabitCard/HabitCard'
 import Modal from "../Modal/Modal"
 import "./Habit.css"
-import axios from "axios"
 
 type IState = {
     _id: string;
@@ -19,7 +18,7 @@ function Habit() {
         <div className="Habit">
             <div className="Habit__heading-container">
                 <h2 className="Habit-header">Habit Checklist</h2>
-                <Modal 
+                <Modal
                     habits={habits}
                     setHabits={setHabits}
                 />
