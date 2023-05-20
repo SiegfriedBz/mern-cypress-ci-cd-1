@@ -24,9 +24,13 @@ jobs:
           cache: 'npm'
       - name: Install Client Dependencies 📦
         run: cd client && npm ci
-      - name: Create React Build 🏗️ & Run Cypress Tests 🧪
+      - name: Install Server Dependencies 📦
+        run: cd server && npm ci
+      - name: Start Server
         run: |
-          cd server && npm start & npx wait-on --time-out 60000
+          cd server
+          npm start & npx wait-on --time-out 60000
+      - name: Create React Build 🏗️ & Run Cypress Tests 🧪
         uses: cypress-io/github-action@v3
         with:
           project: ./client
