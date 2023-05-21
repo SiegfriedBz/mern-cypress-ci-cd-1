@@ -16,13 +16,13 @@ function Accomplishment() {
     const [message, setMessage] = useState("")
 
     const handleSubmit = async () => {
-        setLoading(true)
         if(!title || !accomplishment || !valid) {
             setMessage("Complete the items above to continue")
             setShowError(true)
             return
         }
 
+        setLoading(true)
         try {
             const response = await axios.post("http://localhost:4000/api/accomplishments", {
                 title,
