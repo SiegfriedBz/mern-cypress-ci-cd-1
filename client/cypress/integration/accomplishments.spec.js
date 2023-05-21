@@ -2,6 +2,10 @@
 
 describe('Accomplishments', () => {
 
+    const accomplishmentTitle = 'I pet a pet'
+    const accomplishmentContent = 'I pet a pet twice'
+    const accomplishmentUnacceptableContent = 'I pet a giraffe twice'
+
     describe('FE tests', () => {
 
         const successMessage = 'This Accomplishment was Successfully Submitted'
@@ -61,19 +65,21 @@ describe('Accomplishments', () => {
 
         describe('FE tests -- MOCK HTTP POST requests', () => {
 
-            const accomplishmentTitle = 'I pet a pet'
-            const accomplishmentContent = 'I pet a pet twice'
-            const accomplishmentUnacceptableContent = 'I pet a giraffe twice'
             const unacceptableResponseMessage = 'Your mock content is not appropriate'
 
             const interceptPostAccomplishments = () => {
-                cy.intercept({ method: 'POST', url: '**/api/accomplishments' },
+                const options = {
+                    method: 'POST',
+                    url: 'http://localhost:4000/api/accomplishments'
+                }
+
+                cy.intercept(options,
                     (req) => {
                         if(req.body.title.includes('giraffe') || req.body.accomplishment.includes('giraffe')) {
                             return req.reply({
                                 statusCode: 406,
                                 body: {
-                                    msg: 'Your mock content is not appropriate'
+                                    message: 'Your mock content is not appropriate'
                                 }
                             })
                         } else {
@@ -116,7 +122,30 @@ describe('Accomplishments', () => {
     })
 
     describe('BE tests --- HTTP POST requests', () => {
+        const options = (accomplishment) => {
+            return {
+                method: 'POST',
+                url: 'http://localhost:4000/api/accomplishments',
+                body: {
+                    title: accomplishmentTitle,
+                    accomplishment: accomplishment
+                }
+            }
+        }
 
+        it('POST request api/accomplishments with valid request body should send a response status 201', () => {
+            cy.request(options(accomplishmentContent))
+                .should((response) => {
+                    expect(response.status).to.eq(201)
+                })
+        })
+
+        it('POST request api/accomplishments with unacceptable request body should send a response status 406', () => {
+            cy.request({...options(accomplishmentUnacceptableContent), failOnStatusCode: false })
+                .should((response) => {
+                    expect(response.status).to.eq(406)
+                    expect(response.body).to.have.property('message')
+                })
+        })
     })
-
 })
