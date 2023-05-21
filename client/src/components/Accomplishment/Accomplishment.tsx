@@ -23,25 +23,17 @@ function Accomplishment() {
         }
 
         setLoading(true)
+
         try {
-            const response = await axios.post("http://localhost:4000/api/accomplishments", {
+            await axios.post("http://localhost:4000/api/accomplishments", {
                 title,
                 accomplishment
             });
-            const data = response.data
-
-            if(response.status === 406) {
-                setMessage(data.msg)
-                setShowError(true)
-                setLoading(false)
-                return
-            } else {
-                setShowSuccess(true)
-                setLoading(false)
-            }
+            setShowSuccess(true)
+            setLoading(false)
 
         } catch (error: any) {
-            setMessage(error.response.data.msg)
+            setMessage(error.response.data.message)
             setShowError(true)
             setLoading(false)
         }
