@@ -20,8 +20,11 @@ describe('Rewards', () => {
 
     describe('BE tests --- HTTP GET requests', () => {
         it('GET request api/rewards should send a response status OK and body containing a rewards property', () => {
-
-            cy.request('GET', 'http://localhost:4000/api/rewards')
+            const options = {
+                method: 'GET',
+                url: 'http://localhost:4000/api/rewards',
+            }
+            cy.request(options)
                 .should((response) => {
                     expect(response.status).to.eq(200)
                     expect(response.body).to.have.property('rewards')
