@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:server": "cd server && npm start",
+    "start:client": "cd client && npm start",
+    "build:client": "cd client && npm run build",
+    "cypress:open": "cd client && npm run cypress:open"
   },
   "repository": {
     "type": "git",
