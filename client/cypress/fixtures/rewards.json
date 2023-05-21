@@ -1,15 +1,19 @@
-[{
-  "id": 1,
-  "reward": "100000 points for drinking 8 cups of water for 7 straight days",
-  "month": "January"
-},
-  {
-    "id": 2,
-    "reward": "850000 points for fasting for 5 days straight",
+{
+  "rewards":
+  [{
+    "id": 1,
+    "reward": "100000 points for drinking 8 cups of water for 7 straight days",
     "month": "January"
   },
-  {
-    "id": 3,
-    "reward": "250000 points for exercising for 3 straight days",
-    "month": "January"
-  }]
+    {
+      "id": 2,
+      "reward": "850000 points for fasting for 5 days straight",
+      "month": "January"
+    },
+    {
+      "id": 3,
+      "reward": "250000 points for exercising for 3 straight days",
+      "month": "January"
+    }
+  ]
+}
