@@ -13,29 +13,38 @@ function Accomplishment() {
     const [showError, setShowError] = useState(false);
     const [loading, setLoading] = useState(false);
     const [showSuccess, setShowSuccess] = useState(false)
-    const [errorMsg, setErrorMsg] = useState("")
+    const [message, setMessage] = useState("")
 
     const handleSubmit = async () => {
+        setLoading(true)
         if(!title || !accomplishment || !valid) {
-            setErrorMsg("Complete the items above to continue")
+            setMessage("Complete the items above to continue")
             setShowError(true)
             return
         }
 
         try {
-            setLoading(true)
-            await axios.post("http://localhost:4000", {
+            const response = await axios.post("http://localhost:4000/api/accomplishments", {
                 title,
                 accomplishment
             });
-            setLoading(false)
-        } catch (error: any) {
-            setErrorMsg(error.response.data.msg)
-            setShowError(true)
-            return
-        }
+            const data = response.data
 
-        setShowSuccess(true)
+            if(response.status === 406) {
+                setMessage(data.msg)
+                setShowError(true)
+                setLoading(false)
+                return
+            } else {
+                setShowSuccess(true)
+                setLoading(false)
+            }
+
+        } catch (error: any) {
+            setMessage(error.response.data.msg)
+            setShowError(true)
+            setLoading(false)
+        }
     }
 
     return (
@@ -73,7 +82,7 @@ function Accomplishment() {
                             {
                                 showError && (
                                     <div className="Accomplishment-error-container">
-                                        <p>{errorMsg}</p>
+                                        <p>{message}</p>
                                     </div>
                                 )
                             }
@@ -93,7 +102,7 @@ function Accomplishment() {
                         <div>
                             <div className="Accomplishment-spinner-container">
                                 <img src={confetti} alt='confetti' className="Accomplishment-img"/>
-                                <h1>This Accomplisment was Successfully Submitted</h1>
+                                <h1>This Accomplishment was Successfully Submitted</h1>
                             </div>
                             <button className="Accomplishment-btn" onClick={() => {
                                 setShowSuccess(false);

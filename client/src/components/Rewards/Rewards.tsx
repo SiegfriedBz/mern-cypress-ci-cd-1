@@ -26,7 +26,7 @@ function Rewards() {
     }, []);
 
     const fetchRewards = async () => {
-        const response = await axios.get("http://localhost:4000/rewards");
+        const response = await axios.get("http://localhost:4000/api/rewards");
         console.log(response)
         setReward(response.data)
     }

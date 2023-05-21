@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json())
 app.use(cors())
 
-app.post("/", (req, res) => {
+app.post("/api/accomplishments", (req, res) => {
 
     const { title, accomplishment } = req.body;
 
@@ -16,13 +16,11 @@ app.post("/", (req, res) => {
         })
     }
 
-    return res.json({
-        msg: "Accomplisment sent"
-    })
+    return res.sendStatus(201)
 
 });
 
-app.get("/rewards", (req, res) => {
+app.get("/api/rewards", (req, res) => {
     res.json([{
         id: 1,
         reward: "500 points for drinking 8 cups of water for 7 straight days",
