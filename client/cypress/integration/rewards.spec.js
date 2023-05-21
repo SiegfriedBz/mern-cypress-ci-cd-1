@@ -2,8 +2,8 @@
 
 describe('Rewards', () => {
 
-    describe('Mock requests - FE tests', () => {
-        it('should render the rewards page --- mock', () => {
+    describe('FE tests -- MOCK HTTP GET requests', () => {
+        it('mocked GET request should render the fixture rewards', () => {
 
             cy.intercept({method: 'GET', url: 'http://localhost:4000/api/rewards'},
                 { fixture: 'rewards.json' })
@@ -18,8 +18,8 @@ describe('Rewards', () => {
         })
     })
 
-    describe('API call - BE tests', () => {
-        it('should send a response status OK and body containing a rewards property --- API', () => {
+    describe('BE tests --- HTTP GET requests', () => {
+        it('GET request api/rewards should send a response status OK and body containing a rewards property', () => {
 
             cy.request('GET', 'http://localhost:4000/api/rewards')
                 .should((response) => {
