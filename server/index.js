@@ -10,14 +10,12 @@ app.post("/api/accomplishments", (req, res) => {
 
     const { title, accomplishment } = req.body;
 
-    if(title.includes("giraffe") || accomplishment.includes("giraffe")){
-        return res.status(406).json({
-            msg: "Your content is not appropriate"
-        })
-    }
-
-    return res.sendStatus(201)
-
+        if(title.includes("giraffe") || accomplishment.includes("giraffe")){
+            return res.status(406).json({
+                message: "Your content is not appropriate"
+            })
+        }
+        return res.sendStatus(201)
 });
 
 app.get("/api/rewards", (req, res) => {
