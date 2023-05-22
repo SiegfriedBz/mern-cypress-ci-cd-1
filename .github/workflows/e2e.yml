@@ -29,7 +29,7 @@ jobs:
       - name: Start Server
         run: npm run start:server & npx wait-on --time-out 60000
       - name: Create React Build 🏗️ Run Cypress Tests 🧪
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v5
         with:
           project: .
           browser: chrome
