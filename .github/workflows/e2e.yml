@@ -28,11 +28,12 @@ jobs:
         run: cd server && npm ci
       - name: Start Server
         run: npm run start:server & npx wait-on --time-out 60000
-      - name: Create React Build 🏗️ Run Cypress Tests 🧪
-        uses: cypress-io/github-action@v3
+      - name: Create React Build 🏗️ & Run Cypress Tests 🧪
+        uses: cypress-io/github-action@v5
         with:
-          project: ./client
+          project: .
           browser: chrome
           build: npm run build:client
           start: npm run start:client
           wait-on: "http://localhost:3000"
+          command: npm run cypress:run

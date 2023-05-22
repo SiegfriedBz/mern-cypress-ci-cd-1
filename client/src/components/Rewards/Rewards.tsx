@@ -27,8 +27,8 @@ function Rewards() {
 
     const fetchRewards = async () => {
         const response = await axios.get("http://localhost:4000/api/rewards");
-        console.log(response)
-        setReward(response.data)
+        console.log(response.data.rewards)
+        setReward(response.data.rewards)
     }
 
     return (
@@ -47,7 +47,8 @@ function Rewards() {
             <ul className="Rewards-cards-container">
                 {filteredRewards.map(reward => {
                     return (
-                        <li className="Rewards-cards-list">
+                        <li key={reward.id}
+                            className="Rewards-cards-list">
                             {reward.reward}
                         </li>
                     )
