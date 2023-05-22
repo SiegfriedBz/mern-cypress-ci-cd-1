@@ -36,4 +36,4 @@ jobs:
           build: npm run build:client
           start: npm run start:client
           wait-on: "http://localhost:3000"
-          command: npx cypress run
+          command: npm run cypress:run
