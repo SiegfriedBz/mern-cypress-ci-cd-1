@@ -7,7 +7,7 @@
     "start:server": "cd ./server && npm start",
     "dev:server": "cd ./server && npm run dev",
     "start:client": "cd ./client && npm start",
-    "build:client": "cd ./client && npm run build",
+    "build:client": "cd ./client && npm install && npm run build",
     "cypress:open": "cd ./client && npm run cypress:open",
     "cypress:run": "cd ./client && npx cypress run"
   },
